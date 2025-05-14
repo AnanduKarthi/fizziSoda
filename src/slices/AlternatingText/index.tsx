@@ -9,6 +9,8 @@ import {
 
 import { Bounded } from "@/components/Bounded";
 import clsx from "clsx";
+import { View } from "@react-three/drei";
+import Scenes from "./Scenec";
 /**
  * Props for `AltrnatingText`.
  */
@@ -27,9 +29,9 @@ const AlternatingText = ({ slice }: AlternatingTextProps): JSX.Element => {
     >
       <div>
         <div className="relative z-[100] grid">
-          {/* <View className="alternating-text-view absolute left-0 top-0 h-screen w-full">
-            <Scene />
-          </View> */}
+          <View className="alternating-text-view absolute left-0 top-0 h-screen w-full">
+            <Scenes />
+          </View>
 
           {slice.primary.text_group.map((item, index) => (
             <div

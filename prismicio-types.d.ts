@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | BigTextSlice
   | AltrnatingTextSlice
   | CarouselSlice
   | SkyDiveSlice
@@ -152,6 +153,36 @@ type AltrnatingTextSliceVariation = AltrnatingTextSliceDefault;
 export type AltrnatingTextSlice = prismic.SharedSlice<
   "altrnating_text",
   AltrnatingTextSliceVariation
+>;
+
+/**
+ * Default variation for BigText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BigTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *BigText*
+ */
+type BigTextSliceVariation = BigTextSliceDefault;
+
+/**
+ * BigText Shared Slice
+ *
+ * - **API ID**: `big_text`
+ * - **Description**: BigText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BigTextSlice = prismic.SharedSlice<
+  "big_text",
+  BigTextSliceVariation
 >;
 
 /**
@@ -410,6 +441,9 @@ declare module "@prismicio/client" {
       AltrnatingTextSliceDefaultPrimary,
       AltrnatingTextSliceVariation,
       AltrnatingTextSliceDefault,
+      BigTextSlice,
+      BigTextSliceVariation,
+      BigTextSliceDefault,
       CarouselSlice,
       CarouselSliceDefaultPrimary,
       CarouselSliceVariation,
